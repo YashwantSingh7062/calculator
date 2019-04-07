@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="calculator">
+                <div class="calculator-heading my-2 mb-5">
+                    <h3 class="display-5 text-center text-light">Calculator</h3>
+                </div>
+                <form action="" method="post" name="calculator">
+                    <div class="row m-0 mt-2">
+                        <div class="col-9 col-md-10 p-0 px-1">
+                            <input type="text" id="calc_value" name="calc_value" class="form-control">
+                        </div>
+                        <div class="col-3 col-md-2 p-0 px-1 text-center">
+                            <button type="button" name="clear" class="btn btn-info btn-block">C</button>
+                        </div>
+                    </div>
+                    <div class="row m-0 mt-2">
+                        <div class="col-3 p-0 px-2"><input type="button" value="1" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="2" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="3" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-1"><input type="button" value="+" class="btn btn-info btn-block"></div>
+                    </div>
+                    <div class="row m-0 mt-2">
+                        <div class="col-3 p-0 px-2"><input type="button" value="4" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="5" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="6" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-1"><input type="button" value="-" class="btn btn-info btn-block"></div>
+                    </div>
+                    <div class="row m-0 mt-2">
+                        <div class="col-3 p-0 px-2"><input type="button" value="7" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="8" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="9" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-1"><input type="button" value="*" class="btn btn-info btn-block"></div>
+                    </div>
+                    <div class="row m-0 mt-2">
+                        <div class="col-3 p-0 px-2"><input type="button" value="0" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="/" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-2"><input type="button" value="%" class="btn btn-info btn-block"></div>
+                        <div class="col-3 p-0 px-1"><button name="answer" type="button" class="btn btn-info btn-block">=</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                let calc_value = $("#calc_value");
+                let value;
+                $("form").on({
+                    click : function() {
+                        value = calc_value.val()+$(this).val();
+                        calc_value.val(value); 
+                    } 
+                },"input[type='button']"); 
+
+                $("button[name='answer']").on({
+                    click : function(){
+                        calc_value.val(eval(value));
+                    }
+                });
+                
+                $("button[name='clear']").click(function(){
+                   calc_value.val('');
+                });
+            });
+        </script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>
